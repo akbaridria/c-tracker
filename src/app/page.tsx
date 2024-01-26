@@ -1,95 +1,70 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+import CustomNode from '@/components/CustomNode';
+import CustomEdge from '@/components/CustomEdge';
+import FormData from '@/components/FormData';
+import { FormResult } from '@/components/FormResult';
+import { YourFlow } from '@/components/YourFlow';
+import { SearchIcon } from '@heroicons/react/solid';
+import { Button } from '@tremor/react';
+import React, { useCallback, useState } from 'react';
+import ReactFlow, { Background, Controls, Node, NodeChange, Panel, applyNodeChanges, Position, Edge, NodeTypes, EdgeTypes, MarkerType } from 'reactflow';
+
+import 'reactflow/dist/style.css';
+
+const initialNodes: Node[] = [
+  { id: '1', type: 'custom', sourcePosition: 'right' as Position, targetPosition: 'left' as Position, position: { x: 0, y: 0 }, data: { walletAddress: '1', chainLogo: '2', label: '3' } },
+  { id: '2', type: 'custom', targetPosition: 'left' as Position, position: { x: 0, y: 100 }, data: { walletAddress: '1', chainLogo: '2', label: '3' } },
+];
+const initialEdges: Edge[] = [{
+  id: 'e1-2', source: '1', target: '2', type: 'bezier', data: { label: 'ini disini' }, markerEnd: {
+    type: MarkerType.ArrowClosed,
+    width: 20,
+    height: 20
+  },
+  label: 'Transfer 20K USDC',
+  animated: true
+}];
+
+const nodeTypes: NodeTypes = {
+  custom: CustomNode,
+};
+
+const edgeTypes: EdgeTypes = {
+  custom: CustomEdge
+};
 
 export default function Home() {
+  const [nodes, setNodes] = useState(initialNodes);
+
+  const onNodesChange = useCallback(
+    (changes: NodeChange[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [],
+  );
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div className='h-screen w-screen'>
+      <ReactFlow nodes={nodes} edges={initialEdges} onNodesChange={onNodesChange} nodeTypes={nodeTypes} edgeTypes={edgeTypes} fitView>
+        <Background />
+        <Panel position="top-left">
+          <div className='grid grid-cols-1 gap-4'>
+            <div className='flex gap-4'>
+              <Button icon={SearchIcon} variant='secondary' className='w-fit' size='sm'>
+                Open Form
+              </Button>
+              <Button icon={SearchIcon} variant='secondary' className='w-fit' size='sm'>
+                Open Data
+              </Button>
+            </div>
+            <div className='flex gap-4'>
+              {/* <FormData /> */}
+              {/* <FormResult /> */}
+              {/* <YourFlow /> */}
+            </div>
+          </div>
+        </Panel>
+        <Controls />
+      </ReactFlow>
+    </div>
   );
 }
