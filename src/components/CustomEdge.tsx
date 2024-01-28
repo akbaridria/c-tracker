@@ -3,7 +3,7 @@
 import React, { FC } from 'react';
 import { EdgeProps, getBezierPath, EdgeLabelRenderer, BaseEdge } from 'reactflow';
 
-const CustomEdge: FC<EdgeProps> = ({
+const CustomEdge: FC<EdgeProps<string[]>> = ({
   id,
   sourceX,
   sourceY,
@@ -30,16 +30,18 @@ const CustomEdge: FC<EdgeProps> = ({
           style={{
             position: 'absolute',
             transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
-            background: '#ffcc00',
             padding: 10,
             borderRadius: 5,
-            fontSize: 12,
-            fontWeight: 700,
           }}
-          className="nodrag nopan text-sm text-center"
+          className="nodrag nopan text-[8px] bg-blue-500 text-white"
         >
-          <div>10.000,00 USDC ($10,000)</div>
-          <div>Dec 13, 2023 3:12:59 PM</div>
+          {
+            data?.map((item) => {
+              return (
+                <div key={item}>{item}</div>
+              )
+            })
+          }
         </div>
       </EdgeLabelRenderer>
     </>

@@ -1,0 +1,36 @@
+{
+  "chains": [
+    {
+      "chain_name": "eth-mainnet",
+      "logo": {
+        "url": "https://www.datocms-assets.com/86369/1669653891-eth.svg",
+        "background": "#5E798A"
+      },
+      "rpc": "https://ethereum.publicnode.com"
+    },
+    {
+      "chain_name": "matic-mainnet",
+      "logo": {
+        "url": "https://www.datocms-assets.com/86369/1677870347-property-1-polygon-zkevm-icon-white.svg",
+        "background": "#8247E5"
+      },
+      "rpc": "https://polygon-rpc.com"
+    },
+    {
+      "chain_name": "avalanche-mainnet",
+      "logo": {
+        "url": "https://www.datocms-assets.com/86369/1686152918-avalanche-icon-white.svg",
+        "background": "#E84142"
+      },
+      "rpc": "https://1rpc.io/avax/c"
+    },
+    {
+      "chain_name": "bsc-mainnet",
+      "logo": {
+        "url": "https://www.datocms-assets.com/86369/1670003808-binance-smart-chain-icon-white.svg",
+        "background": "#F1B90A"
+      },
+      "rpc": "https://bsc.publicnode.com"
+    }
+  ]
+}

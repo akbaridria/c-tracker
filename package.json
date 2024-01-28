@@ -9,22 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@covalenthq/client-sdk": "^0.7.6",
     "@headlessui/react": "^1.7.18",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "1.0.6",
+    "@hookform/resolvers": "^3.3.4",
+    "@hookstate/core": "^4.0.1",
     "@remixicon/react": "^4.1.1",
     "@tremor/react": "^3.13.3",
+    "ethereum-block-by-date": "^1.4.9",
+    "ethers": "^6.10.0",
+    "moment": "^2.30.1",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "reactflow": "^11.10.2"
+    "react-hook-form": "^7.49.3",
+    "reactflow": "^11.10.2",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
+    "@types/dagre": "^0.7.52",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.17",
+    "dagre": "^0.8.5",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8.4.33",
