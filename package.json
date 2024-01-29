@@ -37,6 +37,7 @@
     "dagre": "^0.8.5",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "html-to-image": "^1.11.11",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

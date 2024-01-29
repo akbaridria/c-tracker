@@ -38,6 +38,7 @@ export const searchData = async (
         to_address: item.transfers[0].to_address,
         to_label: item.transfers[0].to_address_label || "unknown",
         token_address: item.transfers[0].contract_ticker_symbol,
+        chain_name: data.chain_name
       };
     }),
   };

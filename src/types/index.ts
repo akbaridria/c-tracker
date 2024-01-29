@@ -1,7 +1,8 @@
 export type NodeData = {
   walletAddress: string,
   chainLogo: string,
-  label: string
+  label: string,
+  background: string
 }
 
 export interface IFormResult {
@@ -11,7 +12,8 @@ export interface IFormResult {
   to_address: string,
   to_label: string,
   token_address: string,
-  amount: number
+  amount: number,
+  chain_name: string
 }
 
 export interface IPagination {

@@ -16,7 +16,7 @@ import { searchData, trimWallet } from '@/utils/helper'
 import { useCallback } from 'react'
 import { IFormResult } from '@/types'
 
-export const FormResult = ({ addFlows }: { addFlows: (val: string, val_label: string, val2: string, val2_label: string, label: string) => void }) => {
+export const FormResult = ({ addFlows }: { addFlows: (val: string, val_label: string, val2: string, val2_label: string, label: string, chain_name: string) => void }) => {
 
   const tableResult = useTableResult();
   const pagination = usePagination();
@@ -25,8 +25,7 @@ export const FormResult = ({ addFlows }: { addFlows: (val: string, val_label: st
 
   const insertData = useCallback(
     (data: IFormResult) => {
-      
-      addFlows(data.from_address, data.from_label, data.to_address, data.to_label, `Transfer ${new Intl.NumberFormat('en', { notation: 'compact'}).format(data.amount)} ${data.token_address}`)
+      addFlows(data.from_address, data.from_label, data.to_address, data.to_label, `Transfer ${new Intl.NumberFormat('en', { notation: 'compact'}).format(data.amount)} ${data.token_address}`, data.chain_name)
     },
     []
   )
